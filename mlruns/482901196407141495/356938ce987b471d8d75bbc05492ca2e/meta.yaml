@@ -1,0 +1,15 @@
+artifact_uri: file:///Users/nekka/Documents/nekka/Project/SmfCodes/Branch_Check/2026_4/smf-cd-pipeline/MLOps_Demo5/heart_disease_classification_mlops/mlruns/482901196407141495/356938ce987b471d8d75bbc05492ca2e/artifacts
+end_time: 1778389646377
+entry_point_name: ''
+experiment_id: '482901196407141495'
+lifecycle_stage: active
+run_id: 356938ce987b471d8d75bbc05492ca2e
+run_name: gradient_boosting
+run_uuid: 356938ce987b471d8d75bbc05492ca2e
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1778389645464
+status: 3
+tags: []
+user_id: nekka

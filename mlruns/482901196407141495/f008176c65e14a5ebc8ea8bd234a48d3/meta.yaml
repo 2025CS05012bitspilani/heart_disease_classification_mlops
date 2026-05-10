@@ -1,0 +1,15 @@
+artifact_uri: file:///Users/nekka/Documents/nekka/Project/SmfCodes/Branch_Check/2026_4/smf-cd-pipeline/MLOps_Demo5/heart_disease_classification_mlops/mlruns/482901196407141495/f008176c65e14a5ebc8ea8bd234a48d3/artifacts
+end_time: 1778390686595
+entry_point_name: ''
+experiment_id: '482901196407141495'
+lifecycle_stage: active
+run_id: f008176c65e14a5ebc8ea8bd234a48d3
+run_name: logreg
+run_uuid: f008176c65e14a5ebc8ea8bd234a48d3
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1778390680876
+status: 3
+tags: []
+user_id: nekka
