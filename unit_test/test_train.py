@@ -65,4 +65,4 @@ def test_train_end_to_end_with_tiny_grid(tmp_path, monkeypatch, cleaned_df):
     assert summary["best_model"] == "logreg"
     assert (tmp_path / "models" / "heart_pipeline.joblib").is_file()
     assert (tmp_path / "reports" / "metrics.json").is_file()
-    assert (tmp_path / "reports" / "figures" / "roc_curves.png").is_file()
+    assert (tmp_path / "screenshots" / "roc_curves.png").is_file()

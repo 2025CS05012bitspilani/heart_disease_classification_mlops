@@ -162,8 +162,9 @@ def train(data_path: Path, models_dir: Path, reports_dir: Path,
           cv: int, random_state: int, test_size: float,
           use_mlflow: bool = False,
           mlflow_tracking_uri: str | None = None) -> dict:
-    figures_dir = PROJECT_ROOT / "screenshots"
+    figures_dir = reports_dir.parent / "screenshots"
     models_dir.mkdir(parents=True, exist_ok=True)
+    reports_dir.mkdir(parents=True, exist_ok=True)
     figures_dir.mkdir(parents=True, exist_ok=True)
 
     from contextlib import nullcontext
