@@ -6,7 +6,7 @@ End-to-end MLOps pipeline for the **UCI Heart Disease** dataset: data acquisitio
 
 **Stack:** Python 3.11, scikit-learn, MLflow, Flask, GitHub Actions, Docker, Kubernetes (`kind` + `ingress-nginx`), Prometheus.
 
-📄 **Final report:** [`reports/REPORT.md`](reports/REPORT.md) (also exported as `reports/REPORT.pdf` / `reports/REPORT.docx`)  ·  🗺️ **Architecture:** [`reports/architecture.md`](reports/architecture.md) (rendered → `reports/figures/architecture.png`)  ·  🖼️ **Screenshots checklist:** [`screenshots/README.md`](screenshots/README.md)
+📄 **Final report:** [`reports/REPORT.md`](reports/REPORT.md) (also exported as `reports/REPORT.pdf` / `reports/REPORT.docx`)  ·  🗺️ **Architecture:** [`reports/architecture.md`](reports/architecture.md) (rendered → `screenshots/architecture.png`)  ·  🖼️ **Screenshots checklist:** [`screenshots/README.md`](screenshots/README.md)
 
 ## How to access the deployed API (Deliverable c)
 
@@ -89,7 +89,7 @@ Assignment/
 │   ├── api/                           (Task 6 — Flask /predict)
 │   └── utils/
 ├── notebooks/01_eda.ipynb             Exploratory data analysis
-├── reports/figures/                   EDA plots (PNG)
+├── screenshots/                      EDA plots (PNG)
 ├── unit_test/                         pytest suite (Task 5)
 ├── docker/                            Dockerfile (Task 6)
 ├── k8s/                               Kubernetes manifests (Task 7)
@@ -190,7 +190,7 @@ pip install -r requirements.txt
 # 2. Build the cleaned CSV (data/processed/heart_disease_clean.csv)
 ./.venv/bin/python -m src.data.preprocess
 
-# 3. Run the EDA notebook end-to-end (figures -> reports/figures/)
+# 3. Run the EDA notebook end-to-end (figures -> screenshots/)
 ./.venv/bin/jupyter nbconvert --to notebook --execute \
     notebooks/01_eda.ipynb --output 01_eda.ipynb
 
@@ -253,7 +253,7 @@ pip install -r requirements.txt
 | 8 | `sex` | +0.31 | male ↑ disease |
 | 9 | `age` | +0.29 | older ↑ disease |
 
-**Generated figures** (`reports/figures/`):
+**Generated figures** (`screenshots/`):
 `class_balance.png`, `missingness_overall.png`, `missingness_per_source.png`, `histograms_by_target.png`, `disease_rate_by_category.png`, `correlation_heatmap.png`, `boxplots_numeric.png`.
 
 ---
@@ -290,7 +290,7 @@ Best Random Forest hyper-parameters: `n_estimators=200, max_depth=8, min_samples
 **Artefacts produced**
 - `models/heart_pipeline.joblib` — full preprocessor + model (used by Task 4 / 6)
 - `reports/metrics.json` — per-model CV + test metrics
-- `reports/figures/roc_curves.png`, `reports/figures/confusion_matrix.png`
+- `screenshots/roc_curves.png`, `screenshots/confusion_matrix.png`
 
 **Tests** (`unit_test/`) — 12 pytest cases, run in ~9 s:
 - `test_preprocess.py` — sentinel-zero handling, target binary/balanced, `ca_missing` flag matches `ca.isna()`, CSV roundtrip.

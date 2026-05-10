@@ -6,7 +6,7 @@ model, tunes hyperparameters via 5-fold stratified ``GridSearchCV``
 held-out 20 % test split, persists the overall winner to
 ``models/heart_pipeline.joblib`` **and** the portable MLflow flavour at
 ``models/mlflow_model/``, and writes ``reports/metrics.json`` plus ROC and
-confusion-matrix figures under ``reports/figures/``.
+confusion-matrix figures under ``screenshots/``.
 
 Usage:
     python -m src.models.train [--cv 5] [--random-state 42] [--test-size 0.2]
@@ -162,7 +162,7 @@ def train(data_path: Path, models_dir: Path, reports_dir: Path,
           cv: int, random_state: int, test_size: float,
           use_mlflow: bool = False,
           mlflow_tracking_uri: str | None = None) -> dict:
-    figures_dir = reports_dir / "figures"
+    figures_dir = PROJECT_ROOT / "screenshots"
     models_dir.mkdir(parents=True, exist_ok=True)
     figures_dir.mkdir(parents=True, exist_ok=True)
 

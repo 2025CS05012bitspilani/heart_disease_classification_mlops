@@ -20,7 +20,7 @@ for c, v in df.isna().mean().sort_values(ascending=False).head(5).items():
 EOF
   echo
   echo "=== T1.OUT.B: EDA figures on disk ==="
-  ls -lh reports/figures/*.png 2>&1 | awk '{print $5, $NF}'
+  ls -lh screenshots/*.png 2>&1 | awk '{print $5, $NF}'
 } > /tmp/T1.txt 2>&1
 
 # T2

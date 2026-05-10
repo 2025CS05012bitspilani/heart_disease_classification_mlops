@@ -4,7 +4,7 @@ GitHub renders Mermaid blocks natively. Export to PNG/SVG with the
 [Mermaid CLI](https://github.com/mermaid-js/mermaid-cli):
 
 ```bash
-mmdc -i reports/architecture.md -o reports/figures/architecture.png \
+mmdc -i reports/architecture.md -o screenshots/architecture.png \
      -t neutral -b transparent
 ```
 

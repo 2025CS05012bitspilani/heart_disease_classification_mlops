@@ -11,7 +11,7 @@ set -euo pipefail
 
 REPO_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
 REPORTS="$REPO_ROOT/Assignment/reports"
-FIGURES="$REPORTS/figures"
+FIGURES="$REPO_ROOT/Assignment/screenshots"
 CHROME="/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
 
 cd "$REPO_ROOT"
