@@ -16,7 +16,7 @@ import sys
 import tempfile
 from pathlib import Path
 
-REPO = "2025cs05012/heart_disease_classification_mlops"
+REPO = "2025CS05012bitspilani/heart_disease_classification_mlops"
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / "screenshots" / "ci_run.png"
 

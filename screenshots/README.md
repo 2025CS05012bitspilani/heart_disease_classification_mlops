@@ -7,7 +7,7 @@ filenames are referenced verbatim from `reports/REPORT.md` and
 | File | What to capture | Source command / view |
 |---|---|---|
 | `mlflow_ui.png`         | MLflow UI showing the parent run (`grid_search_…`) expanded with three nested runs and their metrics. | `mlflow ui --backend-store-uri file://$PWD/mlruns` → http://localhost:5000 |
-| `ci_run.png`            | A green GitHub Actions run for `ci.yml` — lint ✓ test ✓ train ✓, with the artefacts list visible. | https://github.com/`<your-username>`/`<your-repo>`/actions |
+| `ci_run.png`            | A green GitHub Actions run for `ci.yml` — lint ✓ test ✓ train ✓, with the artefacts list visible. | https://github.com/2025CS05012bitspilani/heart_disease_classification_mlops/actions |
 | `docker_build.png`      | Terminal showing `docker build -f docker/Dockerfile -t heart-api:latest .` succeeding, with the final image size. | local terminal |
 | `kubectl_get_pods.png`  | `kubectl get pods -l app=heart-api` showing both replicas in `Running 1/1`. | `kubectl get pods -l app=heart-api -o wide` |
 | `kubectl_get_svc.png`   | `kubectl get svc heart-api` showing `NodePort 80:30050/TCP`. | `kubectl get svc,hpa -l app=heart-api` |

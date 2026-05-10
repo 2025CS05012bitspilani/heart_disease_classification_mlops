@@ -1,6 +1,6 @@
 # MLOps Assignment-I — Heart Disease Classification
 
-[![CI](https://github.com/2025cs05012/heart_disease_classification_mlops/actions/workflows/ci.yml/badge.svg)](https://github.com/2025cs05012/heart_disease_classification_mlops/actions/workflows/ci.yml)
+[![CI](https://github.com/2025CS05012bitspilani/heart_disease_classification_mlops/actions/workflows/ci.yml/badge.svg)](https://github.com/2025CS05012bitspilani/heart_disease_classification_mlops/actions/workflows/ci.yml)
 
 End-to-end MLOps pipeline for the **UCI Heart Disease** dataset: data acquisition → cleaning → EDA → modelling → MLflow tracking → packaging → CI/CD → Docker → Kubernetes (kind + Ingress) → monitoring.
 
@@ -33,7 +33,7 @@ Prerequisites: Docker (Engine or Desktop) running, plus `kind` and
 `kubectl` on PATH (`brew install kind kubectl`).
 
 ```bash
-git clone https://github.com/2025cs05012/heart_disease_classification_mlops.git
+git clone https://github.com/2025CS05012bitspilani/heart_disease_classification_mlops.git
 cd heart_disease_classification_mlops
 
 bash scripts/demo_up.sh
@@ -103,7 +103,7 @@ Assignment/
 ## Setup
 
 ```bash
-git clone https://github.com/2025cs05012/heart_disease_classification_mlops.git
+git clone https://github.com/2025CS05012bitspilani/heart_disease_classification_mlops.git
 cd heart_disease_classification_mlops
 ```
 
@@ -127,6 +127,42 @@ dependencies. No manual venv ceremony required.
 python3 run_pipeline.py --only install        # just bootstrap .venv + deps
 python3 run_pipeline.py                       # full pipeline (Tasks 1-9)
 python3 run_pipeline.py --quick               # skip docker / k8s / monitoring
+```
+
+**Manual step-by-step fallback (when `run_pipeline.py` cannot run).**
+Every named step of the orchestrator has a direct shell equivalent — run
+any subset individually if the all-in-one runner fails on the target
+machine:
+
+```bash
+# 0. one-time bootstrap (== Option B below)
+python3.12 -m venv .venv && source .venv/bin/activate
+pip install -r requirements.txt
+
+# 1. Tasks 1+2 - data download + clean         (== --only data)
+python -m src.data.download
+python -m src.data.preprocess
+
+# 2. Tasks 3+4 - train + log to MLflow         (== --only train)
+python -m src.models.train
+
+# 3. Unit + integration tests                  (== --only tests)
+pytest -q
+
+# 4. Task 6 - build the API container          (== --only docker)
+docker build -f docker/Dockerfile -t heart-api:latest .
+
+# 5. Task 7 - deploy to a local kind cluster   (== --only k8s)
+bash scripts/demo_up.sh
+
+# 6. Task 3 - launch the MLflow UI on :5500    (== --only mlflow_ui)
+mlflow ui --backend-store-uri "file://$PWD/mlruns" --port 5500 &
+
+# 7. Task 8 - Prometheus + Grafana             (== --only monitor)
+( cd monitoring && docker compose up -d )
+
+# 8. Task 9 - rebuild the HTML / DOCX / PDF report (== --only report)
+bash reports/build_report.sh
 ```
 
 ### Option B — manual install (step-by-step)
@@ -390,7 +426,7 @@ build_features 71 % · download 0 %` — `download.py` is excluded as it makes a
 live UCI HTTP request).
 
 The CI badge at the top of this README is wired to the public repo
-(`2025cs05012/heart_disease_classification_mlops`); a green badge means
+(`2025CS05012bitspilani/heart_disease_classification_mlops`); a green badge means
 the latest push to `main` passed lint, tests, train, and Docker build.
 
 ---
@@ -730,18 +766,3 @@ Tear-down: `docker compose -f monitoring/docker-compose.yml down -v`.
   `method`, `path`, `status`, `latency_ms`, and `n_records`.
 
 ---
-
-## Roadmap
-
-| Task | Marks | Status |
-|---|---:|---|
-| 1. Data Acquisition & EDA | 5 | ✅ |
-| 2. Feature Engineering & Model Development | 8 | ✅ |
-| 3. Experiment Tracking with MLflow | 5 | ✅ |
-| 4. Model Packaging & Reproducibility | 7 | ✅ |
-| 5. CI/CD & Automated Testing | 8 | ✅ |
-| 6. Containerisation (Flask + Docker) | 5 | ✅ |
-| 7. Production Deployment (Docker Desktop K8s) | 7 | ✅ |
-| 8. Monitoring & Logging | 3 | ✅ |
-| 9. Documentation & Reporting | 2 | ✅ |
-| **Total** | **50** | **✅** |

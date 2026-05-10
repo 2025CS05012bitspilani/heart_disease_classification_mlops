@@ -26,7 +26,7 @@ metrics columns visible (CV ROC-AUC, test_roc_auc, etc.).
 ## 2. `ci_run.png` — Task 5 evidence
 
 After pushing the repository to GitHub, open
-`https://github.com/<your-username>/<your-repo>/actions/workflows/ci.yml`
+`https://github.com/2025CS05012bitspilani/heart_disease_classification_mlops/actions/workflows/ci.yml`
 and pick a green run. Capture the **summary view** showing the three
 jobs `lint ✓ → test ✓ → train ✓` in sequence, plus the artefacts panel
 on the right with `coverage-report` and `heart-pipeline-<n>`.
